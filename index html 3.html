@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Presentación</title>
+
+	<!-- VINCULAR EL CSS -->
+	<link rel="stylesheet" href="styles.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+	<main class="container">
+
+		<!-- POP UP DE AGREGAR CURSO / MENSAJES -->
+		<div id="modal" class="modal hidden">
+			<div class="modal-content">
+				<p id="modal-message">Mensaje</p>
+				<button id="closeModal" type="button">Cerrar</button>
+			</div>
+		</div>
+
+		<!-- BOX 1: Título -->
+		<section class="box">
+			<h1 id="nombre">Luisa Montoya</h1>
+		</section>
+
+		<!-- BOX 2: Quién soy -->
+		<section class="box">
+			<h2 class="titulo">Quién soy</h2>
+
+			<p class="biografia">
+				Mi nombre es Luisa Fernanda Montoya, soy ingeniera mecánica graduada de la universidad Tecnológica de Pereira,
+				tengo una maestría en Sistemas de Manufactura del Tec de Monterrey en México. Ahora me desempeño entre otras
+				cosas como mentora en el proyecto Talento Tech del Ministerio de las TIC y ofrezco cursos sobre diferentes temas de interes.
+			</p>
+
+			<p class="biografia">
+				Tengo 5 años de experiencia docente y laboral desarrollando en Python temas relacionados con Inteligencia
+				Artificial y Análisis de datos. También hay temas de HTML y CSS que apenas estoy aprendiendo. Hay algunas
+				cosas que disfruto como:
+			</p>
+
+			<ul class="hobby">
+				<li>Estar con mis gatos</li>
+				<li>Salir a comer</li>
+				<li>Viajar</li>
+			</ul>
+		</section>
+
+		<!-- BOX 3: Link -->
+		<section class="box">
+			<a class="social-link" href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer">
+				Ir a LinkedIn
+			</a>
+		</section>
+
+		<!-- BOX 4: Imagen -->
+		<section class="box center">
+			<img id="imagen-perfil" src="gatos.jpeg" alt="Luna y Chimuelo" width="302" height="403" />
+			<p class="muted">Luna y Chimuelo 🐱</p>
+		</section>
+
+		<!-- BOX 5: Cursos (carrito simple) -->
+		<section class="box">
+			<h2 class="titulo">Cursos ofrecidos</h2>
+			<p class="muted">Haz clic en “Agregar curso” para simular un carrito.</p>
+
+			<div class="courses">
+				<article class="course-card">
+					<h3>Curso de Análisis de datos básico</h3>
+					<button class="btn-add" type="button">Agregar curso</button>
+				</article>
+
+				<article class="course-card">
+					<h3>Curso de Análisis de datos intermedio</h3>
+					<button class="btn-add" type="button">Agregar curso</button>
+				</article>
+
+				<article class="course-card">
+					<h3>Curso de IA para principiantes</h3>
+					<button class="btn-add" type="button">Agregar curso</button>
+				</article>
+			</div>
+		</section>
+
+
+		<!-- BOX 6: Subir CSV y visualizar tabla -->
+		<section class="box">
+			<h2 class="titulo">Cargar archivo CSV</h2>
+			<p class="muted">Sube un archivo CSV para visualizarlo como tabla.</p>
+			<input type="file" id="csvFile" accept=".csv" class="input">
+
+			<button id="clearCSV" class="btn-primary" style="margin-top:10px;">
+			Limpiar archivo
+			</button>
+
+			<div id="tablaCSV" style="margin-top:15px; overflow-x:auto;"></div>
+		</section>
+
+		<!-- BOX 7: Formulario (validación) -->
+		<section class="box">
+			<h2 class="titulo">Formulario de interés</h2>
+			<p class="muted">Ejercicio para practicar validación con JavaScript.</p>
+
+			<form id="interestForm" class="form-grid" novalidate>
+				<!-- Nombre y apellidos -->
+				<div class="field">
+					<label for="fullName">Nombre y apellidos *</label>
+					<input id="fullName" name="fullName" class="input" type="text" placeholder="Ej: Luisa Montoya" />
+					<small class="error" id="error-fullName"></small>
+				</div>
+
+				<!-- Teléfono -->
+				<div class="field">
+					<label for="phone">Teléfono *</label>
+					<input id="phone" name="phone" class="input" type="text" placeholder="Ej: +573001234567 o 3001234567" />
+					<small class="error" id="error-phone"></small>
+				</div>
+
+				<!-- Correo -->
+				<div class="field">
+					<label for="email">Correo electrónico *</label>
+					<input id="email" name="email" class="input" type="text" placeholder="Ej: correo@dominio.com" />
+					<small class="error" id="error-email"></small>
+				</div>
+
+				<!-- Selector -->
+				<div class="field">
+					<label for="interest">Estoy interesado en: *</label>
+					<select id="interest" name="interest" class="input">
+						<option value="">-- Selecciona un curso --</option>
+						<option value="Curso de Análisis de datos básico">Curso de Análisis de datos básico</option>
+						<option value="Curso de Análisis de datos intermedio">Curso de Análisis de datos intermedio</option>
+						<option value="Curso de IA para principiantes">Curso de IA para principiantes</option>
+					</select>
+					<small class="error" id="error-interest"></small>
+				</div>
+
+				<!-- Comentario -->
+				<div class="field field-full">
+					<label for="comment">Comentario </label>
+					<textarea id="comment" name="comment" class="input textarea" rows="4" placeholder="Escribe tu comentario..."></textarea>
+					<small class="muted">Opcional</small>
+				</div>
+
+				<div class="field field-full">
+					<button class="btn-primary" type="submit">Enviar</button>
+					<p class="muted" id="formHint">Tip: prueba escribir mal un dato para ver la validación.</p>
+				</div>
+			</form>
+		</section>
+
+	</main>
+
+	<!-- FOOTER -->
+	<footer class="footer">
+		<div class="footer-inner">
+			<div>
+				<h3 class="footer-title">Contacto</h3>
+				<p class="muted footer-text">Correo: luisamh3@gmail.com</p>
+				<p class="muted footer-text">Tel: +57 320 706 60 00</p>
+			</div>
+
+			<div>
+				<h3 class="footer-title">Redes</h3>
+				<div class="social-icons">
+
+					<a class="icon" href="https://www.whatsapp.com/" target="_blank">
+						<i class="fa-brands fa-whatsapp"></i>
+					</a>
+
+					<a class="icon" href="https://www.facebook.com/" target="_blank">
+						<i class="fa-brands fa-facebook"></i>
+					</a>
+
+					<a class="icon" href="https://www.instagram.com/" target="_blank">
+						<i class="fa-brands fa-instagram"></i>
+					</a>
+
+				</div>
+			</div>
+		</div>
+
+		<p class="muted footer-copy">© 2026 - Página de práctica HTML/CSS/JS</p>
+	</footer>
+
+	<!-- VINCULAR CON EL JS -->
+	<script src="app.js"></script>
+</body>
+</html>
